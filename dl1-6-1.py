@@ -40,13 +40,18 @@ plt.savefig(save_dir)
 str_date = (datetime.now() + timedelta(hours=9)).strftime('%Y%m%d%H%M%S')
 
 try:
+    # ホームディレクトリの取得
+    homedir = os.getenv("HOME")
+    print(homedir)
+
+    # pngファイルのパス取得
+    file_dir =  homedir + "/Work/python/" + save_dir
+
+    # Dropboxアップロードのシェルスクリプトを実行する
     command = "bash"
     shellscript = "/usr/local/bin/dropbox_uploader.sh"
     method = "upload"
-    file_dir = "/home/pi/Work/python/" + save_dir
     upload_name = name + "_" + str_date + ".png"
-
-    # Dropboxアップロードのシェルスクリプトを実行する
     res = subprocess.check_call([command, shellscript, method, file_dir, upload_name])
     print("dropboxにアップロードしました。")
 except:
