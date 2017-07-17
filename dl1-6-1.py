@@ -1,3 +1,5 @@
+#python 3.4.2で動作確認
+
 import numpy as np
 import matplotlib
 
