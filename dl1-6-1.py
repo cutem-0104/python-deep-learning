@@ -1,3 +1,5 @@
+# グラフを描画するプログラム
+
 # python 3.4.2で動作確認
 # Dropboxへのアップロードを行うため、別途下記リンクを参考に設定が必要
 # https://auxin01.wordpress.com/2016/08/22/raspberry-pi_raspbian_dropbox-uploader2016/
@@ -25,10 +27,16 @@ import traceback
 
 # データの作成
 x = np.arange(0, 6, 0.1)
-y = np.sin(x)
+y1 = np.sin(x)
+y2 = np.cos(x)
 
 # グラフの描画
-plt.plot(x, y)
+plt.plot(x, y1, label="sin")
+plt.plot(x, y2, linestyle = "--", label="cos") # 破線で描画
+plt.xlabel("x") # x軸のラベル
+plt.ylabel("y") # y軸のラベル
+plt.title('sin & cos') # タイトル
+plt.legend()
 plt.show()
 
 # ファイル名の取得
